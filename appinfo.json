@@ -1,0 +1,29 @@
+{
+  "uuid": "9242550c-e64e-4a76-8c6b-889f8249d6fd",
+  "shortName": "MinimalDo",
+  "longName": "MinimalDo",
+  "companyName": "mantazer",
+  "versionCode": 1,
+  "versionLabel": "1.0.0",
+  "watchapp": {
+    "watchface": true
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": [
+      {
+        "type": "font",
+        "name": "FONT_OSP_DIN_21",
+        "file": "fonts/OSP-DIN.ttf"
+      },
+      {
+        "characterRegex": "[:0-9]",
+        "type": "font",
+        "name": "FONT_OSP_DIN_49",
+        "file": "fonts/OSP-DIN.ttf"
+      }
+    ]
+  }
+}
