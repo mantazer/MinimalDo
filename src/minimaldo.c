@@ -94,6 +94,12 @@ void tick(struct tm *tick_time, TimeUnits units_changed) {
   }
 
   text_layer_set_text_alignment(todo_layer, GTextAlignmentCenter);
+
+  free(checkpoint1);
+  free(checkpoint2);
+  free(checkpoint3);
+  free(checkpoint4);
+
 }
 
 // Deallocation
