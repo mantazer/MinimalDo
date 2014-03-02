@@ -57,55 +57,43 @@ void tick(struct tm *tick_time, TimeUnits units_changed) {
   text_layer_set_text_alignment(time_layer, GTextAlignmentCenter);
 
   // TODO: Make dynamic
-  
-  // char checkpoint1[] = "13:00";
-  // char checkpoint2[] = "14:00";
-  // char checkpoint3[] = "15:00";
-  // char checkpoint4[] = "16:00";
-  // char checkpoint5[] = "17:00";
 
-  static char checkpoint1[] = "1:00";
-
-  time_t current_time = (time_t) time_text;
-  time_t new_time = (time_t) checkpoint1;
+  struct tm *checkpoint1 = malloc(sizeof(struct tm));
+  checkpoint1->tm_hour = 14; // corresponds to 14 or (2pm) 
   
-  if ( difftime(current_time, new_time) < 0 ) {
-    text_layer_set_text(todo_layer, "WORKS");
+  struct tm *checkpoint2 = malloc(sizeof(struct tm));
+  checkpoint2->tm_hour = 15; // offset of two (3pm)
+
+  struct tm *checkpoint3 = malloc(sizeof(struct tm));
+  checkpoint3->tm_hour = 16; // (4pm)
+  
+  struct tm *checkpoint4 = malloc(sizeof(struct tm));
+  checkpoint4->tm_hour = 17; // 5(pm)
+
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "C : %d", tick_time->tm_hour);
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "1 : %d", checkpoint1->tm_hour);
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "2 : %d", checkpoint2->tm_hour);
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "3 : %d", checkpoint3->tm_hour);
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "4 : %d", checkpoint4->tm_hour);
+
+
+  if (tick_time->tm_hour < checkpoint1->tm_hour) {
+    text_layer_set_text(todo_layer, "Continue Hacking!");
+  }
+  else if (tick_time->tm_hour < checkpoint2->tm_hour) {
+    text_layer_set_text(todo_layer, "Stop Hacking!");
+  }
+  else if (tick_time->tm_hour < checkpoint3->tm_hour) {
+    text_layer_set_text(todo_layer, "Begin Demos!");
+  }
+  else if (tick_time->tm_hour < checkpoint4->tm_hour) {
+    text_layer_set_text(todo_layer, "Depart HackNC!");
   }
   else {
-    text_layer_set_text(todo_layer, "FAILS");
-
+    text_layer_set_text(todo_layer, "Nothing to do!");
   }
 
-  // time_t checkpoint1 = (time_t) "13:00:00";
-  // time_t checkpoint2 = (time_t) "14:00:00";
-  // time_t checkpoint3 = (time_t) "15:00:00";
-  // time_t checkpoint4 = (time_t) "16:00:00";
-  // time_t checkpoint5 = (time_t) "17:00:00";
-
-
-  // double seconds = difftime(checkpoint1, current_time);
-
-  // if ( difftime(current_time, checkpoint1) < 0 ) {
-  //   text_layer_set_text(todo_layer, "Continue Hacking");
-  // }
-  // else if ( difftime(current_time, checkpoint2) < 0 ) {
-  //   text_layer_set_text(todo_layer, "Stop Hacking"); 
-  // }
-  // else if ( difftime(current_time, checkpoint2) < 0 ) {
-  //   text_layer_set_text(todo_layer, "Get Lunch"); 
-  // }
-  // else if ( difftime(current_time, checkpoint2) < 0 ) {
-  //   text_layer_set_text(todo_layer, "Begin Demos"); 
-  // }
-  // else if ( difftime(current_time, checkpoint2) < 0) {
-  //   text_layer_set_text(todo_layer, "Leave HackNC"); 
-  // }
-  // else {
-  //   text_layer_set_text(todo_layer, "Nothing to do"); 
-  // }
-
-  // text_layer_set_text_alignment(todo_layer, GTextAlignmentCenter);
+  text_layer_set_text_alignment(todo_layer, GTextAlignmentCenter);
 }
 
 // Deallocation
