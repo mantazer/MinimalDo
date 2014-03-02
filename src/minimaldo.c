@@ -1,4 +1,8 @@
+
 #include "pebble.h"
+#include "time.h"
+#include "stdio.h"
+#include "string.h"
 
 // Global variable declaration
 
@@ -53,9 +57,55 @@ void tick(struct tm *tick_time, TimeUnits units_changed) {
   text_layer_set_text_alignment(time_layer, GTextAlignmentCenter);
 
   // TODO: Make dynamic
+  
+  // char checkpoint1[] = "13:00";
+  // char checkpoint2[] = "14:00";
+  // char checkpoint3[] = "15:00";
+  // char checkpoint4[] = "16:00";
+  // char checkpoint5[] = "17:00";
 
-  text_layer_set_text(todo_layer, "do: Present Hack");
-  text_layer_set_text_alignment(todo_layer, GTextAlignmentCenter);
+  static char checkpoint1[] = "1:00";
+
+  time_t current_time = (time_t) time_text;
+  time_t new_time = (time_t) checkpoint1;
+  
+  if ( difftime(current_time, new_time) < 0 ) {
+    text_layer_set_text(todo_layer, "WORKS");
+  }
+  else {
+    text_layer_set_text(todo_layer, "FAILS");
+
+  }
+
+  // time_t checkpoint1 = (time_t) "13:00:00";
+  // time_t checkpoint2 = (time_t) "14:00:00";
+  // time_t checkpoint3 = (time_t) "15:00:00";
+  // time_t checkpoint4 = (time_t) "16:00:00";
+  // time_t checkpoint5 = (time_t) "17:00:00";
+
+
+  // double seconds = difftime(checkpoint1, current_time);
+
+  // if ( difftime(current_time, checkpoint1) < 0 ) {
+  //   text_layer_set_text(todo_layer, "Continue Hacking");
+  // }
+  // else if ( difftime(current_time, checkpoint2) < 0 ) {
+  //   text_layer_set_text(todo_layer, "Stop Hacking"); 
+  // }
+  // else if ( difftime(current_time, checkpoint2) < 0 ) {
+  //   text_layer_set_text(todo_layer, "Get Lunch"); 
+  // }
+  // else if ( difftime(current_time, checkpoint2) < 0 ) {
+  //   text_layer_set_text(todo_layer, "Begin Demos"); 
+  // }
+  // else if ( difftime(current_time, checkpoint2) < 0) {
+  //   text_layer_set_text(todo_layer, "Leave HackNC"); 
+  // }
+  // else {
+  //   text_layer_set_text(todo_layer, "Nothing to do"); 
+  // }
+
+  // text_layer_set_text_alignment(todo_layer, GTextAlignmentCenter);
 }
 
 // Deallocation
