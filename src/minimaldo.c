@@ -31,6 +31,7 @@ void tick(struct tm *tick_time, TimeUnits units_changed) {
 
   strftime(date_text, sizeof(date_text), "%B %e", tick_time);
   text_layer_set_text(date_layer, date_text);
+  text_layer_set_text_alignment(date_layer, GTextAlignmentCenter);
 
   if (clock_is_24h_style()) {
     time_format = "%R";
@@ -49,10 +50,12 @@ void tick(struct tm *tick_time, TimeUnits units_changed) {
   // Push to layer
 
   text_layer_set_text(time_layer, time_text);
+  text_layer_set_text_alignment(time_layer, GTextAlignmentCenter);
 
   // TODO: Make dynamic
 
   text_layer_set_text(todo_layer, "do: Present Hack");
+  text_layer_set_text_alignment(todo_layer, GTextAlignmentCenter);
 }
 
 // Deallocation
