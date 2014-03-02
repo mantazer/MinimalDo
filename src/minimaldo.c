@@ -1,3 +1,6 @@
+// Muntaser Ahmed
+// HackNC Spring 2014
+
 
 #include "pebble.h"
 #include "time.h"
@@ -75,7 +78,6 @@ void tick(struct tm *tick_time, TimeUnits units_changed) {
   APP_LOG(APP_LOG_LEVEL_DEBUG, "2 : %d", checkpoint2->tm_hour);
   APP_LOG(APP_LOG_LEVEL_DEBUG, "3 : %d", checkpoint3->tm_hour);
   APP_LOG(APP_LOG_LEVEL_DEBUG, "4 : %d", checkpoint4->tm_hour);
-
 
   if (tick_time->tm_hour < checkpoint1->tm_hour) {
     text_layer_set_text(todo_layer, "Continue Hacking!");
